@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RegisterActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <LinearLayout
+                android:id="@+id/activity_register__fullname_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ваше полное имя"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__surname_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Фамилия"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__firstname_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Имя"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__middlename_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Отчество (при наличии)"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_register__location_block"
+                android:layout_below="@+id/activity_register__fullname_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ваша локация"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__country_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Страна"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__city_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Город"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_register__age_block"
+                android:layout_below="@+id/activity_register__location_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="03"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ваш возраст"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__age_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Возраст"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_register__gender_block"
+                android:layout_below="@+id/activity_register__age_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="04"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ваш пол"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <Spinner
+                    android:id="@+id/activity_register__gender_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Возраст"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_register__about_block"
+                android:layout_below="@+id/activity_register__gender_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="180dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="03"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ваш возраст"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__about_field"
+                    android:layout_height="wrap_content"
+                    android:hint="О себе"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:background="@color/background">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activity_register__scroll_up_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/background"
+            android:contentDescription="scroll up"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
+            app:backgroundTint="@color/background"
+            app:fabCustomSize="50dp"
+            app:tint="@null" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_register__scroll_down_btn"
+            app:fabCustomSize="50dp"
+            android:backgroundTint="@color/primary"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:contentDescription="scroll down"
+            app:tint="@null"
+            app:backgroundTint="@color/primary"
+            android:src="@drawable/ic_baseline_arrow_downward_24"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

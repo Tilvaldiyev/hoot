@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity"
+    android:orientation="vertical"
+    android:background="@color/primary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="50"
+        android:layout_height="0dp"
+        android:background="@color/primary">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_white"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="55"
+        android:background="@drawable/rounded_edge"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="40dp">
+
+            <View
+                android:layout_weight="40"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/primary"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ВХОД"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+            <View
+                android:layout_weight="40"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/primary"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_height="wrap_content"
+            android:hint="Логин"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:background="@drawable/edit_text"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_text"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Войти"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_variant"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="Забыли пароль?"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:id="@+id/activity_login__forgot_pswd_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+    </LinearLayout>
+</LinearLayout>
