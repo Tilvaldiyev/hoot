@@ -1,0 +1,29 @@
+package kz.hoot.response;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class LoginResponse {
+    @SerializedName("accessToken")
+    @Expose()
+    private String accessToken;
+
+    @SerializedName("refreshToken")
+    @Expose()
+    private String refreshToken;
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginResponse{" +
+                "access token='" + accessToken + '\'' + "refresh token='" + refreshToken +  '\'' +
+                '}';
+    }
+}

@@ -2,17 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kz.hoot">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo_colored"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Hoot">
-        <activity android:name=".RegisterActivity"></activity>
+        android:theme="@style/Theme.Hoot"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:name=".ActorsActivity"
+            />
+        <activity
+            android:name=".RegisterActivity" />
+        <activity
+            android:name=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

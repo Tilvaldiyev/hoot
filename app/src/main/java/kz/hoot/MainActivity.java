@@ -2,29 +2,26 @@ package kz.hoot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import kz.hoot.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        Intent intent;
         switch (v.getId()) {
             case R.id.main_activity__login_btn:
-                 intent = new Intent(MainActivity.this, LoginActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+                break;
             case R.id.main_activity__register_btn:
-                intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                Intent regIntent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(regIntent);
+                break;
             default:
                 break;
         }
@@ -35,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnOnClick = findViewById(R.id.main_activity__login_btn);
-        btnOnClick.setOnClickListener(this);
+        Button logInBtn = findViewById(R.id.main_activity__login_btn);
+        Button registerBtn = findViewById(R.id.main_activity__register_btn);
+        logInBtn.setOnClickListener(this);
+        registerBtn.setOnClickListener(this);
     }
 }

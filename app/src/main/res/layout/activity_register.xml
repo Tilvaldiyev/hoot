@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <ScrollView
+        android:id="@+id/activity_register__scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -20,11 +21,11 @@
             android:paddingRight="20dp">
 
             <LinearLayout
-                android:id="@+id/activity_register__fullname_block"
+                android:id="@+id/activity_register__auth_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="180dp">
+                android:paddingTop="130dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -35,7 +36,85 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ваше полное имя"
+                    android:text="Авторизационные данные"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__login_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Логин"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__password_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Пароль"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:id="@+id/activity_register__password_repeat_field"
+                    android:layout_height="wrap_content"
+                    android:hint="Повторите пароль"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/activity_register__account_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:background="@drawable/edit_text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_register__personal_data_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="130dp"
+                android:layout_below="@id/activity_register__auth_block">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02"
+                    android:textColor="@color/primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Личные данные"
                     android:textColor="@color/primary"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -45,7 +124,7 @@
                     android:id="@+id/activity_register__surname_field"
                     android:layout_height="wrap_content"
                     android:hint="Фамилия"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
@@ -59,60 +138,7 @@
                     android:id="@+id/activity_register__firstname_field"
                     android:layout_height="wrap_content"
                     android:hint="Имя"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/edit_text"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingTop="13dp"
-                    android:paddingBottom="13dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15sp"/>
-
-                <EditText
-                    android:id="@+id/activity_register__middlename_field"
-                    android:layout_height="wrap_content"
-                    android:hint="Отчество (при наличии)"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/edit_text"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingTop="13dp"
-                    android:paddingBottom="13dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15sp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/activity_register__location_block"
-                android:layout_below="@+id/activity_register__fullname_block"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="180dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02"
-                    android:textColor="@color/primary"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ваша локация"
-                    android:textColor="@color/primary"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginTop="10dp"/>
-
-                <EditText
-                    android:id="@+id/activity_register__country_field"
-                    android:layout_height="wrap_content"
-                    android:hint="Страна"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
@@ -123,28 +149,68 @@
                     android:layout_marginTop="10dp"/>
 
                 <EditText
-                    android:id="@+id/activity_register__city_field"
+                    android:id="@+id/activity_register__middlename_field"
                     android:layout_height="wrap_content"
-                    android:hint="Город"
-                    android:inputType="textEmailAddress"
+                    android:hint="Отчество (при наличии)"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
                     android:paddingTop="13dp"
                     android:paddingBottom="13dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_register__age_field"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Возраст"-->
+<!--                    android:inputType="number"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:background="@drawable/edit_text"-->
+<!--                    android:paddingLeft="30dp"-->
+<!--                    android:paddingRight="30dp"-->
+<!--                    android:paddingTop="13dp"-->
+<!--                    android:paddingBottom="13dp"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_marginTop="10dp"/>-->
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/activity_register__gender"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingRight="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/edit_text"-->
+<!--                    />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_register__about_field"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:minHeight="150dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@drawable/edit_text"-->
+<!--                    android:hint="Интересы, навыки, знания, хобби..."-->
+<!--                    android:inputType="text"-->
+<!--                    android:paddingLeft="30dp"-->
+<!--                    android:paddingTop="13dp"-->
+<!--                    android:paddingRight="30dp"-->
+<!--                    android:paddingBottom="13dp"-->
+<!--                    android:textSize="15sp"/>-->
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activity_register__age_block"
-                android:layout_below="@+id/activity_register__location_block"
+                android:id="@+id/activity_register__location_block"
+                android:layout_below="@+id/activity_register__personal_data_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="180dp">
+                android:paddingTop="130dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -155,144 +221,119 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ваш возраст"
-                    android:textColor="@color/primary"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginTop="10dp"/>
-
-                <EditText
-                    android:id="@+id/activity_register__age_field"
-                    android:layout_height="wrap_content"
-                    android:hint="Возраст"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/edit_text"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingTop="13dp"
-                    android:paddingBottom="13dp"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/activity_register__gender_block"
-                android:layout_below="@+id/activity_register__age_block"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="180dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="04"
-                    android:textColor="@color/primary"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ваш пол"
+                    android:text="Адрес"
                     android:textColor="@color/primary"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:layout_marginTop="10dp"/>
 
                 <Spinner
-                    android:id="@+id/activity_register__gender_field"
-                    android:layout_height="wrap_content"
-                    android:hint="Возраст"
-                    android:inputType="textEmailAddress"
+                    android:id="@+id/activity_register__country_field"
                     android:layout_width="match_parent"
-                    android:background="@drawable/edit_text"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingTop="13dp"
-                    android:paddingBottom="13dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
                     android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
+                    android:background="@drawable/edit_text"
+                    />
 
+                <Spinner
+                    android:id="@+id/activity_register__city_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:background="@drawable/edit_text"
+                    />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/activity_register__about_block"
-                android:layout_below="@+id/activity_register__gender_block"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/activity_register__register_btn"
+                android:layout_below="@+id/activity_register__location_block"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="180dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="03"
-                    android:textColor="@color/primary"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ваш возраст"
-                    android:textColor="@color/primary"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginTop="10dp"/>
-
-                <EditText
-                    android:id="@+id/activity_register__about_field"
-                    android:layout_height="wrap_content"
-                    android:hint="О себе"
-                    android:inputType="textEmailAddress"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/edit_text"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingTop="13dp"
-                    android:paddingBottom="13dp"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
+                android:text="Зарегистрироваться"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="90dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:layout_centerInParent="true"/>
         </RelativeLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="end"
-        android:background="@color/background">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:background="@color/background"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingRight="20dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginEnd="30dp"-->
+<!--            android:layout_weight="80">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_register__answered_count_text"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="0 из 3 отвечено"-->
+<!--                android:textColor="@color/primary"-->
+<!--                android:textSize="13sp"/>-->
+
+<!--            <ProgressBar-->
+<!--                android:id="@+id/activity_register__answered_progress_bar"-->
+<!--                style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="7dp"-->
+<!--                android:progressDrawable="@drawable/progress"/>-->
+
+<!--        </LinearLayout>-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/activity_register__scroll_up_btn"
             android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="75dp"
             android:layout_marginBottom="15dp"
             android:backgroundTint="@color/background"
             android:contentDescription="scroll up"
             android:src="@drawable/ic_baseline_arrow_upward_24"
             app:backgroundTint="@color/background"
             app:fabCustomSize="50dp"
-            app:tint="@null" />
+            app:tint="@null"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/activity_register__scroll_down_btn"
             app:fabCustomSize="50dp"
             android:backgroundTint="@color/primary"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginEnd="20dp"
             android:contentDescription="scroll down"
             app:tint="@null"
             app:backgroundTint="@color/primary"
             android:src="@drawable/ic_baseline_arrow_downward_24"/>
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </RelativeLayout>

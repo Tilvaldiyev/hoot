@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity"
+    tools:context=".LoginActivity"
     android:orientation="vertical"
     android:background="@color/primary">
 
@@ -62,7 +62,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/login_activity__email_field"
             android:layout_height="wrap_content"
             android:hint="Логин"
             android:inputType="textEmailAddress"
@@ -75,7 +75,7 @@
             android:textSize="15sp"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/login_activity__password_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Пароль"
@@ -89,7 +89,7 @@
             android:textSize="15sp"/>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/login_activity__login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Войти"
