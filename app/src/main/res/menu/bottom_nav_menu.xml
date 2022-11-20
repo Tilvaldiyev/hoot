@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottom_nav__actors_btn"
-        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:icon="@drawable/ic_outline_home_24"
         android:title="Актеры"/>
     <item
         android:id="@+id/bottom_nav__favorites_btn"
@@ -18,4 +18,9 @@
         android:id="@+id/bottom_nav__castings_btn"
         android:icon="@drawable/ic_baseline_star_outline_24"
         android:title="Кастинги"/>
+
+    <item
+        android:id="@+id/bottom_nav__profile_btn"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="Профиль"/>
 </menu>

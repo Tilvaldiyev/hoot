@@ -3,7 +3,7 @@ package kz.hoot.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class RegistrationModel implements Parcelable {
+public class Registration implements Parcelable {
     private String username;
     private String password;
     private String userType;
@@ -13,7 +13,7 @@ public class RegistrationModel implements Parcelable {
     private String countryCode;
     private int city;
 
-    public RegistrationModel(String login, String password, String userType, String first_name, String last_name, String middle_name, String country, int city) {
+    public Registration(String login, String password, String userType, String first_name, String last_name, String middle_name, String country, int city) {
         this.username = login;
         this.password = password;
         this.userType = userType;
@@ -24,7 +24,7 @@ public class RegistrationModel implements Parcelable {
         this.city = city;
     }
 
-    protected RegistrationModel(Parcel in) {
+    protected Registration(Parcel in) {
         username = in.readString();
         password = in.readString();
         userType = in.readString();
@@ -35,15 +35,15 @@ public class RegistrationModel implements Parcelable {
         city = in.readInt();
     }
 
-    public static final Creator<RegistrationModel> CREATOR = new Creator<RegistrationModel>() {
+    public static final Creator<Registration> CREATOR = new Creator<Registration>() {
         @Override
-        public RegistrationModel createFromParcel(Parcel in) {
-            return new RegistrationModel(in);
+        public Registration createFromParcel(Parcel in) {
+            return new Registration(in);
         }
 
         @Override
-        public RegistrationModel[] newArray(int size) {
-            return new RegistrationModel[size];
+        public Registration[] newArray(int size) {
+            return new Registration[size];
         }
     };
 

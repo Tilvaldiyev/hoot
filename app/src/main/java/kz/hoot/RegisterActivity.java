@@ -3,7 +3,6 @@ package kz.hoot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import kz.hoot.model.RegistrationModel;
+import kz.hoot.model.Registration;
 import kz.hoot.response.RegistrationResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -263,7 +261,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registration() {
         if (checkAuthField() && checkLocationField() && checkPersonalDataField()) {
-            RegistrationModel registrationModel = new RegistrationModel(loginField.getText().toString(), passwordField.getText().toString(),
+            Registration registrationModel = new Registration(loginField.getText().toString(), passwordField.getText().toString(),
                     accountTypeField, firstNameField.getText().toString(), surnameField.getText().toString(), middleNameField.getText().toString(),
                     countryField, Integer.parseInt(cityField));
 

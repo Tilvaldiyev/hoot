@@ -1,10 +1,16 @@
 package kz.hoot.utils;
 
-import kz.hoot.model.RegistrationModel;
+import java.util.List;
+
+import kz.hoot.model.Actor;
+import kz.hoot.model.Registration;
+import kz.hoot.model.User;
+import kz.hoot.response.ActorsResponse;
 import kz.hoot.response.LoginResponse;
 import kz.hoot.response.RegistrationResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -16,6 +22,14 @@ public interface Hoot {
 
     @POST("auth/registration")
     Call<RegistrationResponse> registration(
-            @Body RegistrationModel registrationModel
+            @Body Registration registrationModel
             );
+
+    @GET("actors/all")
+    Call<List<Actor>> getActors();
+
+    @GET("user/info")
+    Call<User> getUserInfo(
+            @Header("Authorization") String token
+    );
 }
