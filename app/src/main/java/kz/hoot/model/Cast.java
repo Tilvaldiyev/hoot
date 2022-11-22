@@ -9,6 +9,7 @@ public class Cast {
     private String poster;
     private String castCreatorName;
     private CastType castType;
+    private String description;
 
     public String getCastName() {
         return castName;
@@ -40,6 +41,10 @@ public class Cast {
 
     public void setCastType(CastType castType) {
         this.castType = castType;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public enum CastType{
