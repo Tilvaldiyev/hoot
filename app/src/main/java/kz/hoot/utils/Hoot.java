@@ -56,4 +56,5 @@ public interface Hoot {
             @Header("Authorization") String bearerAuth,
             @Query("actorId") int actorId
     );
+
 }

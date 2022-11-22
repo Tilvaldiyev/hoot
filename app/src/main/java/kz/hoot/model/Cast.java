@@ -5,12 +5,10 @@ import androidx.annotation.NonNull;
 
 public class Cast {
 
-    private Long castId;
     private String castName;
     private String poster;
     private String castCreatorName;
     private CastType castType;
-    private String description;
 
     public String getCastName() {
         return castName;
@@ -44,14 +42,6 @@ public class Cast {
         this.castType = castType;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Long getCastId() {
-        return castId;
-    }
-
     public enum CastType{
         MOVIE,
         CLIP,
@@ -67,7 +57,6 @@ public class Cast {
     @Override
     public String toString() {
         return "Cast:" +
-                " castId=" + castId +
                 " castName=" + castName +
                 ", castType=" + castType +
                 ", castCreatorName=" + castCreatorName +
