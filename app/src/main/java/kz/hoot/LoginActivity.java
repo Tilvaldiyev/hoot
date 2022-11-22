@@ -1,5 +1,7 @@
 package kz.hoot;
 
+import static kz.hoot.request.Servicey.hoot;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,14 +19,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static kz.hoot.request.Servicey.hoot;
-
 public class LoginActivity extends AppCompatActivity {
 
     private EditText email, password;
     private Button loginBtn, forgotPswdBtn;
 
     private String accessToken = "";
+
+    private String userType = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,12 @@ public class LoginActivity extends AppCompatActivity {
                         editor.apply();
 
                         Intent intent = new Intent(LoginActivity.this, ActorsActivity.class);
+
+                        userType = response.body().getUserType();
+                        if (userType.equals("ACTOR")){
+                            intent = new Intent(LoginActivity.this, CastActivity.class);
+                        }
+
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     } else {

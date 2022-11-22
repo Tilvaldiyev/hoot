@@ -12,12 +12,20 @@ public class LoginResponse {
     @Expose()
     private String refreshToken;
 
+    @SerializedName("userType")
+    @Expose()
+    private String userType;
+
     public String getAccessToken() {
         return accessToken;
     }
 
     public String getRefreshToken() {
         return refreshToken;
+    }
+
+    public String getUserType() {
+        return userType;
     }
 
     @Override

@@ -19,6 +19,8 @@
             android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"/>
+        <activity
+            android:name=".CastActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
