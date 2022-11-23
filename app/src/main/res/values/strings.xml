@@ -16,4 +16,5 @@
     <string name="director">Режиссер:</string>
     <string name="cast_about_cast_text">О фильме</string>
     <string name="want_cast">Хочу в кастинг!</string>
+    <string name="respond_cancel">Отменить</string>
 </resources>

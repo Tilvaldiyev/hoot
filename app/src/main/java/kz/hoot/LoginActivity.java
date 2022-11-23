@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn, forgotPswdBtn;
 
     private String accessToken = "";
+    private String refreshToken = "";
 
     private String userType = "";
 
@@ -66,9 +67,11 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if (response.code() == 200) {
                         accessToken = response.body().getAccessToken();
+                        refreshToken = response.body().getRefreshToken();
                         SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("token", accessToken);
+                        editor.putString("refreshToken", refreshToken);
                         editor.apply();
 
                         Intent intent = new Intent(LoginActivity.this, ActorsActivity.class);
