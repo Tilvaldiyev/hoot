@@ -29,8 +29,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String userType = "";
 
-    private String userType = "";
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

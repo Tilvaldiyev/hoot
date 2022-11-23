@@ -57,4 +57,12 @@ public interface Hoot {
             @Query("actorId") int actorId
     );
 
+
+    @POST("cast/respond")
+    Call<RespondResponse> respondToCast(@Header("Authorization") String token, @Query("castId") Long castId);
+
+    @POST("auth/refresh")
+    Call<LoginResponse> refresh(
+            @Header("Authorization") String bearerAuth
+    );
 }

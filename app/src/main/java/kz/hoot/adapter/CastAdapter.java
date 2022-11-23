@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +33,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
     private ArrayList<Cast> casts = new ArrayList<>();
     private final Context context;
     boolean isAboutCardActive = false;
+    private final CastActivityService castActivityService;
 
     @SuppressLint("NotifyDataSetChanged")
     public void setCasts(ArrayList<Cast> casts) {
@@ -38,9 +41,11 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
 
-    public CastAdapter(Context context) {
+    public CastAdapter(Context context, CastActivityService castActivityService) {
         this.context = context;
+        this.castActivityService = castActivityService;
     }
+
 
     @NonNull
     @Override
@@ -109,6 +114,41 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
                 }
             }
         });
+
+        holder.respondButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int result = castActivityService.respondToCast(casts.get(position).getCastId());
+                if (result == 208){
+                    holder.respondButton.setEnabled(false);
+                    holder.respondButton.setText("Вы уже отправили заявку!");
+                    holder.respondButton.setBackgroundColor(Color.RED);
+                    holder.respondCancelButton.setVisibility(View.VISIBLE);
+                }else if (result == 200){
+                    holder.respondButton.setEnabled(false);
+                    holder.respondButton.setBackgroundColor(Color.GREEN);
+                    holder.respondButton.setText("Вы успешно отправили заявку!");
+                    holder.respondCancelButton.setVisibility(View.VISIBLE);
+                }
+            }
+
+        });
+
+        holder.respondCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                int result = castActivityService.respondToCast(casts.get(position).getCastId());
+                int result = 200;
+                if (result == 200){
+                    holder.respondButton.setEnabled(true);
+                    holder.respondButton.setText("Хочу в кастинг!");
+                    holder.respondButton.setBackgroundColor(context.getResources().getColor(R.color.primary));
+                    holder.respondCancelButton.setVisibility(View.GONE);
+                }
+            }
+
+        });
+
     }
 
     @Override
@@ -125,7 +165,8 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         private final ImageView poster;
         private final LinearLayout cardAboutFrame;
         private final View cardGradient;
-
+        private final Button respondButton;
+        private final Button respondCancelButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -139,6 +180,8 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
             castAboutName = itemView.findViewById(R.id.cast_about_name);
             castDirector = itemView.findViewById(R.id.cast_about_director);
             castDescription = itemView.findViewById(R.id.cast_about_text);
+            respondButton = itemView.findViewById(R.id.card_respond_button);
+            respondCancelButton = itemView.findViewById(R.id.card_respond_cancel_button);
         }
     }
 
@@ -155,4 +198,10 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         fadeIn.setDuration(500);
         return fadeIn;
     }
+
+    public interface CastActivityService{
+        int respondToCast(Long castId);
+    }
 }
+
+
