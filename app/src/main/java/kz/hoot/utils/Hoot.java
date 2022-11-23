@@ -8,11 +8,13 @@ import kz.hoot.model.Registration;
 import kz.hoot.model.User;
 import kz.hoot.response.LoginResponse;
 import kz.hoot.response.RegistrationResponse;
+import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Hoot {
     @POST("auth/login")
@@ -35,4 +37,12 @@ public interface Hoot {
 
     @GET("public/casts")
     Call<List<Cast>> getCasts();
+
+    @POST("cast/respond")
+    Call<RespondResponse> respondToCast(@Header("Authorization") String token, @Query("castId") Long castId);
+
+    @POST("auth/refresh")
+    Call<LoginResponse> refresh(
+            @Header("Authorization") String bearerAuth
+    );
 }

@@ -1,9 +1,6 @@
 package kz.hoot;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import static kz.hoot.request.Servicey.hoot;
 
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -16,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -27,8 +29,6 @@ import kz.hoot.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static kz.hoot.request.Servicey.hoot;
 
 public class ActorsActivity extends AppCompatActivity {
 

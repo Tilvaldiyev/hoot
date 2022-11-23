@@ -3,6 +3,7 @@ package kz.hoot;
 import static kz.hoot.request.Servicey.hoot;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,22 +23,30 @@ import java.util.List;
 
 import kz.hoot.adapter.CastAdapter;
 import kz.hoot.model.Cast;
+import kz.hoot.response.LoginResponse;
+import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CastActivity extends AppCompatActivity {
+public class CastActivity extends AppCompatActivity implements CastAdapter.CastActivityService {
 
     private CastAdapter castAdapter;
     private BottomNavigationView bottomNavigationView;
     private LinearLayout linearLayout;
     private TextView countTxt;
     private RecyclerView castsRecView;
+    private static String token;
+    private static String refreshToken;
+    private int respondResult = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_casts);
+        SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
+        token = preferences.getString("token", "");
+        refreshToken = preferences.getString("refreshToken", "");
 
         initViews();
         initBottomNav();
@@ -52,7 +61,7 @@ public class CastActivity extends AppCompatActivity {
     }
 
     private void initRecView() {
-        castAdapter = new CastAdapter(this);
+        castAdapter = new CastAdapter(this, this);
         castsRecView.setAdapter(castAdapter);
         castsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
@@ -84,7 +93,7 @@ public class CastActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     ArrayList<Cast> casts = (ArrayList<Cast>) response.body();
                     for (int i = 0; i < casts.size(); i++) {
-                        System.out.println( casts.get(i).toString());
+                        System.out.println(casts.get(i).toString());
                     }
                     castAdapter.setCasts(casts);
                     countTxt.setText("Найдено " + castAdapter.getItemCount());
@@ -102,6 +111,71 @@ public class CastActivity extends AppCompatActivity {
             public void onFailure(Call<List<Cast>> call, Throwable t) {
                 System.out.println("Ошибка запроса - " + t.getMessage());
                 System.out.println("Запрос - " + call);
+            }
+        });
+    }
+
+    @Override
+    public int respondToCast(Long castId) {
+        System.out.println("Token - " + token);
+        System.out.println("Refresh Token - " + refreshToken);
+        System.out.println("Cast - " + castId);
+        Call<RespondResponse> responseCall = hoot.respondToCast(token, castId);
+
+        responseCall.enqueue(new Callback<RespondResponse>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(Call<RespondResponse> call, Response<RespondResponse> response) {
+                System.out.println("Response - " + response);
+                System.out.println("Response body - " + response.body());
+                System.out.println("Response code - " + response.code());
+                if (response.code() == 200) {
+                    respondResult = 200;
+                } else if(response.code() == 401){
+                    refreshToken();
+                    respondToCast(castId);
+                    try {
+                        Toast.makeText(CastActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Log.v("Tag", "error" + response.errorBody().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    respondResult = 401;
+                }
+                else if(response.code() == 208){
+                    respondResult = 208;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RespondResponse> call, Throwable t) {
+                System.out.println("Ошибка запроса - " + t.getMessage());
+                System.out.println("Запрос - " + call);
+            }
+        });
+        return respondResult;
+    }
+
+    private void refreshToken() {
+        Call<LoginResponse> responseCall = hoot.refresh(refreshToken);
+
+        responseCall.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.code() == 200) {
+                    token = response.body().getAccessToken();
+                } else {
+                    try {
+                        Log.v("Tag", "error" + response.code());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Log.v("Tag", "error" + t.toString());
             }
         });
     }
