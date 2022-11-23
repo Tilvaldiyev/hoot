@@ -31,6 +31,10 @@ public class ActorAdapter extends RecyclerView.Adapter<ActorAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
     public ActorAdapter(Context context) {
         this.context = context;
     }
