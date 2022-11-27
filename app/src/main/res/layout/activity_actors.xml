@@ -65,6 +65,8 @@
                 android:id="@+id/activity_actors__search_field"
                 android:layout_height="wrap_content"
                 android:hint="Поиск актеров"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/primary"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:background="@drawable/edit_text"
@@ -74,12 +76,14 @@
                 android:paddingBottom="15dp"
                 android:textSize="15sp"/>
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/activity_actors__search_btn"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="10dp"
+                android:background="@color/background"
                 android:src="@drawable/ic_baseline_search_24" />
 
         </FrameLayout>

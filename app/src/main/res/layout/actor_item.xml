@@ -55,6 +55,7 @@
             android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/actor_item__img"
             android:text="Казахстан, Алматы"
+            android:textColor="@color/gray"
             android:textSize="13sp" />
 
         <TextView
@@ -64,6 +65,7 @@
             android:layout_below="@id/actor_item__location"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/actor_item__img"
+            android:textColor="@color/gray"
             android:text="30 лет" />
 
         <Button

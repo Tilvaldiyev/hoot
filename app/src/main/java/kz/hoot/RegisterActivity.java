@@ -1,6 +1,6 @@
 package kz.hoot;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static kz.hoot.request.Servicey.hoot;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +30,6 @@ import kz.hoot.response.RegistrationResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static kz.hoot.request.Servicey.hoot;
 
 public class RegisterActivity extends AppCompatActivity {
     private ScrollView scrollView;
@@ -165,6 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
 //                        accountTypeField = tv.getText().toString();
                         accountTypeField = "ACTOR";
+                        tv.setTextColor(Color.BLACK);
                     }
             }
 
@@ -196,6 +197,7 @@ public class RegisterActivity extends AppCompatActivity {
                     tv.setTextColor(Color.GRAY);
                     countryField = "";
                 } else {
+                    tv.setTextColor(Color.BLACK);
 //                    countryField = tv.getText().toString();
                     countryField = "KAZ";
                 }
@@ -230,6 +232,7 @@ public class RegisterActivity extends AppCompatActivity {
                     cityField = "";
                 } else {
 //                    cityField = tv.getText().toString();
+                    tv.setTextColor(Color.BLACK);
                     cityField = "0";
                 }
             }

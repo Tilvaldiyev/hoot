@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,15 +34,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActorsActivity extends AppCompatActivity {
-
     private BottomNavigationView bottomNavigationView;
     private RecyclerView actorsRecView;
     private ActorAdapter actorAdapter;
     private ImageView avatar;
+    private EditText searchField;
+    private ImageButton searchBtn;
 
     private TextView countTxt;
 
-    private static  String token;
+    private static String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,30 +51,50 @@ public class ActorsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_actors);
         SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
         token = preferences.getString("token", "");
-
         initViews();
         initBottomNav();
         initRecView();
         getActors();
         getUserInfo();
 
-
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchValue = searchField.getText().toString();
+                ArrayList<Actor> actorsAll = actorAdapter.getActors();
+                if (searchValue.length() > 0) {
+                    ArrayList<Actor> filteredActors = new ArrayList<>();
+                    for (Actor a :
+                            actorsAll) {
+                        if (a.getName().contains(searchValue) || a.getLastname().contains(searchValue)) {
+                            filteredActors.add(a);
+                        }
+                    }
+                    actorAdapter.setActors(filteredActors);
+                } else {
+                    getActors();
+                }
+            }
+            ;
+        });
     }
 
-    private void initViews() {
+    private void initViews () {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         actorsRecView = findViewById(R.id.activity_actors__recview);
         countTxt = findViewById(R.id.activity_actors__count_txt);
         avatar = findViewById(R.id.activity_actors__avatar);
+        searchField = findViewById(R.id.activity_actors__search_field);
+        searchBtn = findViewById(R.id.activity_actors__search_btn);
     }
 
-    private void initRecView() {
+    private void initRecView () {
         actorAdapter = new ActorAdapter(this);
         actorsRecView.setAdapter(actorAdapter);
         actorsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
-    private void initBottomNav() {
+    private void initBottomNav () {
         bottomNavigationView.setSelectedItemId(R.id.actor_item__fav_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -87,7 +111,7 @@ public class ActorsActivity extends AppCompatActivity {
         });
     }
 
-    private void getActors() {
+    private void getActors () {
         Call<List<Actor>> responseCall = hoot.getActors();
 
         responseCall.enqueue(new Callback<List<Actor>>() {
@@ -114,7 +138,7 @@ public class ActorsActivity extends AppCompatActivity {
         });
     }
 
-    private void getUserInfo() {
+    private void getUserInfo () {
         Call<User> responseCall = hoot.getUserInfo("Bearer " + token);
         responseCall.enqueue(new Callback<User>() {
             @Override
