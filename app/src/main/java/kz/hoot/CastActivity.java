@@ -4,9 +4,13 @@ import static kz.hoot.request.Servicey.hoot;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +27,7 @@ import java.util.List;
 
 import kz.hoot.adapter.CastAdapter;
 import kz.hoot.model.Cast;
+import kz.hoot.model.User;
 import kz.hoot.response.LoginResponse;
 import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
@@ -39,6 +44,7 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
     private static String token;
     private static String refreshToken;
     private int respondResult = 0;
+    private ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +58,14 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
         initBottomNav();
         initRecView();
         getCasts();
+        getUserInfo();
     }
 
     private void initViews() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         countTxt = findViewById(R.id.casts_count_txt);
         castsRecView = findViewById(R.id.casts_rec_view);
+        avatar = findViewById(R.id.cast_activity_avatar);
     }
 
     private void initRecView() {
@@ -176,6 +184,33 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Log.v("Tag", "error" + t.toString());
+            }
+        });
+    }
+
+    private void getUserInfo () {
+        Call<User> responseCall = hoot.getUserInfo("Bearer " + token);
+        responseCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code() == 200) {
+                    User user = response.body();
+                    byte[] decodedString = Base64.decode(user.getAvatar(), Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    avatar.setImageBitmap(decodedByte);
+                } else {
+                    try {
+                        Toast.makeText(CastActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Log.v("Tag", "error" + response.errorBody().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }
