@@ -52,9 +52,11 @@
                 app:cardElevation="7dp">
 
                 <ImageView
-                    android:id="@+id/main_activity__avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/cast_activity_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -85,6 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text"
+                    android:textColorHint="@color/gray"
                     android:focusable="false"
                     android:hint="@string/cast_search"
                     android:paddingLeft="30dp"

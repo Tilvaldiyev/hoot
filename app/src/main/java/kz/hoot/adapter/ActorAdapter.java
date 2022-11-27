@@ -49,16 +49,18 @@ public class ActorAdapter extends RecyclerView.Adapter<ActorAdapter.ViewHolder> 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.fullname.setText(actors.get(position).getLastname() + " " + actors.get(position).getName() + " " + actors.get(position).getPatronymic());
+        holder.fullname.setText(actors.get(position).getLastname() + " " + actors.get(position).getName());
         holder.age.setText(String.valueOf(actors.get(position).getAge()));
         holder.location.setText(actors.get(position).getCountry() + ", " + actors.get(position).getCity());
-        if (actors.get(position).getPhoto().length() > 0) {
-            byte[] decodedString = Base64.decode(actors.get(position).getPhoto(), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            Glide.with(context)
-                    .asBitmap()
-                    .load(decodedByte)
-                    .into(holder.img);
+        if(actors.get(position).getPhoto()!=null) {
+            if (actors.get(position).getPhoto().length() > 0) {
+                byte[] decodedString = Base64.decode(actors.get(position).getPhoto(), Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                Glide.with(context)
+                        .asBitmap()
+                        .load(decodedByte)
+                        .into(holder.img);
+            }
         }
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -65,6 +65,8 @@
                 android:id="@+id/activity_actors__search_field"
                 android:layout_height="wrap_content"
                 android:hint="Поиск актеров"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/primary"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:background="@drawable/edit_text"

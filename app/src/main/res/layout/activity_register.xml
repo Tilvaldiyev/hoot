@@ -54,6 +54,8 @@
                     android:paddingTop="13dp"
                     android:paddingBottom="13dp"
                     android:textSize="15sp"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:layout_marginTop="10dp"/>
 
                 <EditText
@@ -62,6 +64,8 @@
                     android:hint="Пароль"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
@@ -75,6 +79,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Повторите пароль"
                     android:inputType="textPassword"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
@@ -90,6 +96,8 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:layout_marginTop="10dp"
                     android:textSize="15sp"
                     android:background="@drawable/edit_text"
@@ -125,6 +133,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Фамилия"
                     android:inputType="text"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
@@ -139,6 +149,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Имя"
                     android:inputType="text"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
@@ -154,6 +166,8 @@
                     android:hint="Отчество (при наличии)"
                     android:inputType="text"
                     android:layout_width="match_parent"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
                     android:background="@drawable/edit_text"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
@@ -210,6 +224,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:textColorHint="@color/primary"
+                android:textColor="@color/primary"
                 android:paddingTop="130dp">
 
                 <TextView
