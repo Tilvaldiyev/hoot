@@ -30,6 +30,11 @@ public interface Hoot {
     @GET("actors/all")
     Call<List<Actor>> getActors();
 
+    @GET("actors/favourites")
+    Call<List<Actor>> getFavActors(
+            @Header("Authorization") String token
+    );
+
     @GET("user/info")
     Call<User> getUserInfo(
             @Header("Authorization") String token
@@ -44,5 +49,11 @@ public interface Hoot {
     @POST("auth/refresh")
     Call<LoginResponse> refresh(
             @Header("Authorization") String bearerAuth
+    );
+
+    @POST("actors/add/favourite")
+    Call<String> addActorToFavList(
+            @Header("Authorization") String bearerAuth,
+            @Query("actorId") int actorId
     );
 }

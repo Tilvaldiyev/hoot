@@ -17,4 +17,8 @@
     <string name="cast_about_cast_text">О фильме</string>
     <string name="want_cast">Хочу в кастинг!</string>
     <string name="respond_cancel">Отменить</string>
+    <string name="age">Возраст</string>
+    <string name="city">Город</string>
+    <string name="invite_cast">Пригласить</string>
+    <string name="add_to_fav">В избранное</string>
 </resources>

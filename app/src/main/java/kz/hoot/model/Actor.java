@@ -1,6 +1,7 @@
 package kz.hoot.model;
 
 public class Actor {
+    private int actorId;
     private String nickname;
     private String city;
     private String country;
@@ -9,9 +10,10 @@ public class Actor {
     private String name;
     private String patronymic;
     private String photo;
+    private String about;
     private int age;
 
-    public Actor(String nickname, String city, String country, String gender, String surname, String name, String patronymic, String img, int age) {
+    public Actor(String nickname, String city, String country, String gender, String surname, String name, String patronymic, String img, String about, int age, int id) {
         this.nickname = nickname;
         this.city = city;
         this.country = country;
@@ -21,6 +23,8 @@ public class Actor {
         this.patronymic = patronymic;
         this.photo = img;
         this.age = age;
+        this.about = about;
+        this.actorId = id;
     }
 
     public String getNickname() {
@@ -93,5 +97,21 @@ public class Actor {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public int getActorId() {
+        return actorId;
+    }
+
+    public void setActorId(int actorId) {
+        this.actorId = actorId;
     }
 }

@@ -2,6 +2,8 @@ package kz.hoot;
 
 import static kz.hoot.request.Servicey.hoot;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,13 +29,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kz.hoot.adapter.ActorAdapter;
+import kz.hoot.adapter.CastAdapter;
 import kz.hoot.model.Actor;
 import kz.hoot.model.User;
+import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActorsActivity extends AppCompatActivity {
+public class ActorsActivity extends AppCompatActivity implements ActorAdapter.ActorActivityService {
     private BottomNavigationView bottomNavigationView;
     private RecyclerView actorsRecView;
     private ActorAdapter actorAdapter;
@@ -44,6 +48,7 @@ public class ActorsActivity extends AppCompatActivity {
     private TextView countTxt;
 
     private static String token;
+    private int responseCode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,22 +94,22 @@ public class ActorsActivity extends AppCompatActivity {
     }
 
     private void initRecView () {
-        actorAdapter = new ActorAdapter(this);
+        actorAdapter = new ActorAdapter(this, this);
         actorsRecView.setAdapter(actorAdapter);
         actorsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
     private void initBottomNav () {
-        bottomNavigationView.setSelectedItemId(R.id.actor_item__fav_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__actors_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-//                    case R.id.actor_item__fav_btn:
-//                        Intent intent = new Intent(ActorsActivity.this, MainActivity.class);
-//                        startActivity(intent);
-//                        break;
+                    case R.id.bottom_nav__create_btn:
+                        Intent intent = new Intent(ActorsActivity.this, CreateCastActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }
@@ -163,5 +168,31 @@ public class ActorsActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public int addToFavList(int actorId) {
+        Call<String> responseCall = hoot.addActorToFavList(token, actorId);
+
+        responseCall.enqueue(new Callback<String>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println("Response - " + response);
+                System.out.println("Response body - " + response.body());
+                System.out.println("Response code - " + response.code());
+                if (response.code() == 200) {
+                    Toast.makeText(ActorsActivity.this, "Успешно добавлено", Toast.LENGTH_SHORT).show();
+                    responseCode = response.code();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(ActorsActivity.this, "Произошла ошибка при добавлении! Повторите попытку", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return responseCode;
     }
 }

@@ -75,7 +75,7 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
     }
 
     private void initBottomNav() {
-        bottomNavigationView.setSelectedItemId(R.id.actor_item__fav_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__actors_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
