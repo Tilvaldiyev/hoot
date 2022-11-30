@@ -26,18 +26,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import kz.hoot.adapter.CastAdapter;
+import kz.hoot.adapter.CastHistoryAdapter;
 import kz.hoot.model.Cast;
 import kz.hoot.model.User;
 import kz.hoot.response.LoginResponse;
-import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CastActivity extends AppCompatActivity implements CastAdapter.CastActivityService {
-
-    private CastAdapter castAdapter;
+public class CastHistoryActivity extends AppCompatActivity implements CastHistoryAdapter.CastHistoryActivityService{
+    private CastHistoryAdapter castHistoryAdapter;
     private BottomNavigationView bottomNavigationView;
     private LinearLayout linearLayout;
     private TextView countTxt;
@@ -48,9 +46,9 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
     private ImageView avatar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_casts);
+        setContentView(R.layout.activity_casts_history);
         SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
         token = preferences.getString("token", "");
         refreshToken = preferences.getString("refreshToken", "");
@@ -64,14 +62,14 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
 
     private void initViews() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        countTxt = findViewById(R.id.casts_count_txt);
-        castsRecView = findViewById(R.id.casts_rec_view);
+        countTxt = findViewById(R.id.casts_history_count_txt);
+        castsRecView = findViewById(R.id.casts_history_rec_view);
         avatar = findViewById(R.id.cast_activity_avatar);
     }
 
     private void initRecView() {
-        castAdapter = new CastAdapter(this, this);
-        castsRecView.setAdapter(castAdapter);
+        castHistoryAdapter = new CastHistoryAdapter(this, this);
+        castsRecView.setAdapter(castHistoryAdapter);
         castsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
@@ -83,12 +81,12 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.actor_item__fav_btn:
-                        Intent intent = new Intent(CastActivity.this, CastActivity.class);
+                    case R.id.bottom_nav__actors_btn:
+                        Intent intent = new Intent(CastHistoryActivity.this, CastActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.bottom_nav__castings_btn:
-                        intent = new Intent(CastActivity.this, CastHistoryActivity.class);
+                        intent = new Intent(CastHistoryActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -96,7 +94,6 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
             }
         });
     }
-
     private void getCasts() {
         Call<List<Cast>> responseCall = hoot.getCasts();
 
@@ -109,11 +106,11 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
                     for (int i = 0; i < casts.size(); i++) {
                         System.out.println(casts.get(i).toString());
                     }
-                    castAdapter.setCasts(casts);
-                    countTxt.setText("Найдено " + castAdapter.getItemCount());
+                    castHistoryAdapter.setCasts(casts);
+                    countTxt.setText("Найдено " + castHistoryAdapter.getItemCount());
                 } else {
                     try {
-                        Toast.makeText(CastActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CastHistoryActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         Log.v("Tag", "error" + response.errorBody().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -127,47 +124,6 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
                 System.out.println("Запрос - " + call);
             }
         });
-    }
-
-    @Override
-    public int respondToCast(Long castId) {
-        System.out.println("Token - " + token);
-        System.out.println("Refresh Token - " + refreshToken);
-        System.out.println("Cast - " + castId);
-        Call<RespondResponse> responseCall = hoot.respondToCast(token, castId);
-
-        responseCall.enqueue(new Callback<RespondResponse>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onResponse(Call<RespondResponse> call, Response<RespondResponse> response) {
-                System.out.println("Response - " + response);
-                System.out.println("Response body - " + response.body());
-                System.out.println("Response code - " + response.code());
-                if (response.code() == 200) {
-                    respondResult = 200;
-                } else if(response.code() == 401){
-                    refreshToken();
-                    respondToCast(castId);
-                    try {
-                        Toast.makeText(CastActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        Log.v("Tag", "error" + response.errorBody().toString());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    respondResult = 401;
-                }
-                else if(response.code() == 208){
-                    respondResult = 208;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RespondResponse> call, Throwable t) {
-                System.out.println("Ошибка запроса - " + t.getMessage());
-                System.out.println("Запрос - " + call);
-            }
-        });
-        return respondResult;
     }
 
     private void refreshToken() {
@@ -206,7 +162,7 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
                     avatar.setImageBitmap(decodedByte);
                 } else {
                     try {
-                        Toast.makeText(CastActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CastHistoryActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         Log.v("Tag", "error" + response.errorBody().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -220,4 +176,5 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
             }
         });
     }
+
 }
