@@ -5,9 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:background="@color/main_background"
     android:clickable="true"
-    app:cardCornerRadius="15dp">
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    app:strokeColor="@color/white"
+    app:strokeWidth="2dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +21,8 @@
             android:id="@+id/cast_history_card__parent"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@color/primary_variant">
+            android:background="@color/primary"
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="60dp"
@@ -36,19 +40,6 @@
                     android:layout_gravity="center_horizontal"
                     />
             </androidx.cardview.widget.CardView>
-
-            <!-- Rectangle 2 -->
-            <View
-                android:id="@+id/cast_card_gradient"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.9"
-                android:background="@drawable/rectangle_gradient"
-                app:cardCornerRadius="50dp">
-
-            </View>
-
-
 
                 <TextView
                     android:id="@+id/cast_history_card__name"

@@ -27,6 +27,15 @@ public class Actor {
         this.actorId = id;
     }
 
+    public Actor(String nickname, String country,  String surname, String name, String patronymic, String img, int age, int id) {
+        this.actorId = id;
+        this.nickname = nickname;
+        this.name = name;
+        this.lastname = surname;
+        this.age = age;
+        this.country = country;
+    }
+
     public String getNickname() {
         return nickname;
     }

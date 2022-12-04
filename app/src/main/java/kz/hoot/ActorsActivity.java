@@ -29,10 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kz.hoot.adapter.ActorAdapter;
-import kz.hoot.adapter.CastAdapter;
 import kz.hoot.model.Actor;
 import kz.hoot.model.User;
-import kz.hoot.response.RespondResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -96,7 +94,7 @@ public class ActorsActivity extends AppCompatActivity implements ActorAdapter.Ac
     private void initRecView () {
         actorAdapter = new ActorAdapter(this, this);
         actorsRecView.setAdapter(actorAdapter);
-        actorsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        actorsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
     }
 
     private void initBottomNav () {
@@ -110,6 +108,9 @@ public class ActorsActivity extends AppCompatActivity implements ActorAdapter.Ac
                         Intent intent = new Intent(ActorsActivity.this, CreateCastActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__favorites_btn:
+                        intent = new Intent(ActorsActivity.this, FavouriteActorActivity.class);
+                        startActivity(intent);
                 }
                 return false;
             }

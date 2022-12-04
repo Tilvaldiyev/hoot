@@ -74,7 +74,7 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
     }
 
     private void initBottomNav() {
-        bottomNavigationView.setSelectedItemId(R.id.actor_item__fav_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__castings_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -83,10 +83,6 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
                 switch (item.getItemId()) {
                     case R.id.bottom_nav__actors_btn:
                         Intent intent = new Intent(CastHistoryActivity.this, CastActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.bottom_nav__castings_btn:
-                        intent = new Intent(CastHistoryActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
                 }

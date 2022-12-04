@@ -76,19 +76,15 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
     }
 
     private void initBottomNav() {
-        bottomNavigationView.setSelectedItemId(R.id.actor_item__fav_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__actors_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.actor_item__fav_btn:
-                        Intent intent = new Intent(CastActivity.this, CastActivity.class);
-                        startActivity(intent);
-                        break;
                     case R.id.bottom_nav__castings_btn:
-                        intent = new Intent(CastActivity.this, CastHistoryActivity.class);
+                        Intent intent = new Intent(CastActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
                 }

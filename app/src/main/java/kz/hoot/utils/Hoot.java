@@ -43,14 +43,6 @@ public interface Hoot {
     @GET("public/casts")
     Call<List<Cast>> getCasts();
 
-    @POST("cast/respond")
-    Call<RespondResponse> respondToCast(@Header("Authorization") String token, @Query("castId") Long castId);
-
-    @POST("auth/refresh")
-    Call<LoginResponse> refresh(
-            @Header("Authorization") String bearerAuth
-    );
-
     @POST("actors/add/favourite")
     Call<String> addActorToFavList(
             @Header("Authorization") String bearerAuth,

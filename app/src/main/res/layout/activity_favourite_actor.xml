@@ -1,17 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="60dp"
-    tools:context=".FavouriteActorActivity">
+    android:background="@color/primary"
+    tools:context=".FavouriteActorActivity"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp">
+
+        <!-- MiniLogo -->
+        <RelativeLayout
+            android:id="@+id/mini_logo"
+            android:layout_width="70dp"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:id="@+id/mini_logo_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="-15dp"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/main_activity__hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/favtext"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:padding="2dp"
+            app:cardCornerRadius="330dp"
+            app:cardElevation="7dp">
+
+                <ImageView
+                    android:id="@+id/cast_activity_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_favourite_actor__recview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_favourite_actor__recview"/>
+            android:layout_marginTop="60dp"/>
 
-</LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemTextColor="@color/primary"
+            app:menu="@menu/bottom_nav_menu"
+            android:background="@color/white"
+            app:itemIconTint="@color/primary"/>
+
+</RelativeLayout>

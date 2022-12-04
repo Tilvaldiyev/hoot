@@ -1,21 +1,19 @@
 package kz.hoot;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import static kz.hoot.request.Servicey.hoot;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -28,8 +26,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static kz.hoot.request.Servicey.hoot;
-
 public class FavouriteActorActivity extends AppCompatActivity {
 
     @Override
@@ -39,6 +35,8 @@ public class FavouriteActorActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
         token = preferences.getString("token", "");
+        System.out.println(token);
+
         initViews();
         initBottomNav();
         initRecView();
@@ -66,16 +64,20 @@ public class FavouriteActorActivity extends AppCompatActivity {
     }
 
     private void initBottomNav () {
-        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__actors_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__favorites_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-//                    case R.id.bottom_nav__create_btn:
-//                        Intent intent = new Intent(FavouriteActorActivity.this, CreateCastActivity.class);
-//                        startActivity(intent);
-//                        break;
+                    case R.id.bottom_nav__actors_btn:
+                        Intent intent = new Intent(FavouriteActorActivity.this, ActorsActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.bottom_nav__create_btn:
+                        intent = new Intent(FavouriteActorActivity.this, CreateCastActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }
@@ -83,7 +85,7 @@ public class FavouriteActorActivity extends AppCompatActivity {
     }
 
     private void getFavActors () {
-        Call<List<Actor>> responseCall = hoot.getFavActors(token);
+        Call<List<Actor>> responseCall = hoot.getFavActors("Bearer " + token);
 
         responseCall.enqueue(new Callback<List<Actor>>() {
             @Override
@@ -91,11 +93,11 @@ public class FavouriteActorActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     ArrayList<Actor> actors = (ArrayList<Actor>) response.body();
                     actorAdapter.setActors(actors);
-                    countTxt.setText("Найдено " + actorAdapter.getItemCount());
                 } else {
                     try {
                         Toast.makeText(FavouriteActorActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        Log.v("Tag", "error" + response.errorBody().toString());
+                        Log.v("Tag", "error" + response.code());
+//                        System.out.println(response.body().toString() + " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
