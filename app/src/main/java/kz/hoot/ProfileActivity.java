@@ -7,86 +7,82 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import kz.hoot.adapter.CastHistoryAdapter;
-import kz.hoot.model.Cast;
 import kz.hoot.model.User;
 import kz.hoot.response.LoginResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CastHistoryActivity extends AppCompatActivity implements CastHistoryAdapter.CastHistoryActivityService{
-    private CastHistoryAdapter castHistoryAdapter;
+public class ProfileActivity extends AppCompatActivity {
+
     private BottomNavigationView bottomNavigationView;
-    private LinearLayout linearLayout;
-    private TextView countTxt;
-    private RecyclerView castsRecView;
     private static String token;
     private static String refreshToken;
     private int respondResult = 0;
     private ImageView avatar;
+    private Spinner accountType;
+    private ArrayList<String> accountList;
+    private ArrayAdapter<String> accountTypeAdapter;
+    private String accountTypeField;
+    private Switch actorStatusSwitch;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_casts_history);
+        setContentView(R.layout.fragment_profile);
         SharedPreferences preferences = getSharedPreferences("auth", MODE_PRIVATE);
         token = preferences.getString("token", "");
         refreshToken = preferences.getString("refreshToken", "");
 
         initViews();
         initBottomNav();
-        initRecView();
-        getCasts();
         getUserInfo();
+        initMockData();
+        changeSwitchStatus();
     }
 
     private void initViews() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        countTxt = findViewById(R.id.casts_history_count_txt);
-        castsRecView = findViewById(R.id.casts_history_rec_view);
-        avatar = findViewById(R.id.cast_activity_avatar);
-    }
-
-    private void initRecView() {
-        castHistoryAdapter = new CastHistoryAdapter(this, this);
-        castsRecView.setAdapter(castHistoryAdapter);
-        castsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        avatar = findViewById(R.id.profile_actor__photo);
+        accountType = findViewById(R.id.account_type__spinner);
+        actorStatusSwitch = findViewById(R.id.profile_actor_status__switch);
     }
 
     private void initBottomNav() {
-        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__castings_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__profile_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.bottom_nav__actors_btn:
-                        Intent intent = new Intent(CastHistoryActivity.this, CastActivity.class);
+                    case R.id.bottom_nav__castings_btn:
+                        Intent intent = new Intent(ProfileActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
-                    case R.id.bottom_nav__profile_btn:
-                        intent = new Intent(CastHistoryActivity.this, ProfileActivity.class);
+                    case R.id.bottom_nav__actors_btn:
+                        intent = new Intent(ProfileActivity.this, CastActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -94,37 +90,7 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
             }
         });
     }
-    private void getCasts() {
-        Call<List<Cast>> responseCall = hoot.getCasts();
 
-        responseCall.enqueue(new Callback<List<Cast>>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onResponse(Call<List<Cast>> call, Response<List<Cast>> response) {
-                if (response.code() == 200) {
-                    ArrayList<Cast> casts = (ArrayList<Cast>) response.body();
-                    for (int i = 0; i < casts.size(); i++) {
-                        System.out.println(casts.get(i).toString());
-                    }
-                    castHistoryAdapter.setCasts(casts);
-                    countTxt.setText("Найдено " + castHistoryAdapter.getItemCount());
-                } else {
-                    try {
-                        Toast.makeText(CastHistoryActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        Log.v("Tag", "error" + response.errorBody().toString());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Cast>> call, Throwable t) {
-                System.out.println("Ошибка запроса - " + t.getMessage());
-                System.out.println("Запрос - " + call);
-            }
-        });
-    }
 
     private void refreshToken() {
         Call<LoginResponse> responseCall = hoot.refresh(refreshToken);
@@ -162,7 +128,7 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
                     avatar.setImageBitmap(decodedByte);
                 } else {
                     try {
-                        Toast.makeText(CastHistoryActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         Log.v("Tag", "error" + response.errorBody().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -177,4 +143,47 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
         });
     }
 
+    private void initMockData() {
+        accountList = new ArrayList<>();
+        accountList.add("Aктёр");
+        accountList.add("Кастинг директор");
+
+        accountTypeAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                accountList
+        );
+
+        accountType.setAdapter(accountTypeAdapter);
+
+        accountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    tv.setTextColor(Color.BLACK);
+                    accountTypeField = "";
+                } else {
+//                        accountTypeField = tv.getText().toString();
+                    accountTypeField = "ACTOR";
+                    tv.setTextColor(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+    }
+
+    public void changeSwitchStatus(){
+        if (actorStatusSwitch.isChecked()){
+            System.out.println("Actor status checked");
+        }else {
+            System.out.println("Actor status Unchecked");
+        }
+
+    }
 }

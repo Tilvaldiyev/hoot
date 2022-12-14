@@ -15,4 +15,5 @@
     <color name="cast_type_color">#EAC400</color>
     <color name="cast_agreed">#1bf731</color>
     <color name="cast_disagreed">#f50a0a</color>
+    <color name="transparent">#00ffffff</color>
 </resources>

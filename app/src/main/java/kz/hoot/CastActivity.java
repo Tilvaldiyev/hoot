@@ -87,6 +87,10 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
                         Intent intent = new Intent(CastActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__profile_btn:
+                        intent = new Intent(CastActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

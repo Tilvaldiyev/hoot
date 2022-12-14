@@ -3,23 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nurum/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/cast_card.xml" value="0.1315" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/edit_text.xml" value="0.1045" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/ic_logo_colored.xml" value="0.2065" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/minilogo.xml" value="0.1315" />
+        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/outline_black_stroke.xml" value="0.207" />
+        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/drawable/thumb.xml" value="0.193" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/about_card.xml" value="0.264" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_actors.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_actors_old.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_casts.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_casts_history.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_create_cast.xml" value="0.1" />
+        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_create_cast.xml" value="0.264" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_favourite_actor.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_register.xml" value="0.2181372549019608" />
+        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/activity_register.xml" value="0.10400000000000001" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/actor_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/cast_card.xml" value="0.25" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/cast_history_card.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/layout/fragment_profile.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/nurum/Desktop/HOOT/Hoot/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nurum/Desktop/Mobile App/Hoot/hoot/app/src/main/res/drawable/edit_text.xml" value="0.2625" />
         <entry key="..\:/Users/nurum/Desktop/Mobile App/Hoot/hoot/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2625" />
