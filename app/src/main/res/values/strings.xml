@@ -23,4 +23,11 @@
     <string name="invite_cast">Пригласить</string>
     <string name="add_to_fav">В избранное</string>
     <string name="favtext">Избранные</string>
+    <string name="initals">Дастан Байболатов</string>
+    <string name="actor_status">Готов к сьемкам</string>
+    <string name="change_account_type">Изменить тип аккаунта</string>
+    <string name="actors_cast_progress">Прогресс результата кастингов</string>
+    <string name="actors_cast_progress_percent">75%</string>
+    <string name="account_type_hint">Выберите тип аккаунта</string>
+    <string name="profile">Профиль</string>
 </resources>

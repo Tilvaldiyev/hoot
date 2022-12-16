@@ -8,6 +8,7 @@
                 android:background="@color/main_background">
 
     <RelativeLayout
+        android:id="@+id/cast_activity_block"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp">
