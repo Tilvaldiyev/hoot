@@ -80,7 +80,7 @@ public class CreateCastActivity extends AppCompatActivity {
     }
 
     private void initBottomNav () {
-        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__favorites_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__create_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

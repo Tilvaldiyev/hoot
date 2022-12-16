@@ -12,6 +12,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="casts">Кастинги</string>
+    <string name="myCasts">Мои кастинги</string>
     <string name="cast_search">Поиск кастингов</string>
     <string name="director">Режиссер:</string>
     <string name="cast_about_cast_text">О фильме</string>

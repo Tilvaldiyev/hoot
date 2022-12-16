@@ -33,7 +33,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
     private ArrayList<Cast> casts = new ArrayList<>();
     private final Context context;
     boolean isAboutCardActive = false;
-    private final CastActivityService castActivityService;
+    private CastActivityService castActivityService;
 
     @SuppressLint("NotifyDataSetChanged")
     public void setCasts(ArrayList<Cast> casts) {
@@ -46,6 +46,9 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         this.castActivityService = castActivityService;
     }
 
+    public CastAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @Override

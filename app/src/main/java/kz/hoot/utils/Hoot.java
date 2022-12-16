@@ -43,6 +43,9 @@ public interface Hoot {
     @GET("public/casts")
     Call<List<Cast>> getCasts();
 
+    @GET("cast/created/by/director")
+    Call<List<Cast>> getDirectorCasts();
+
     @POST("actors/add/favourite")
     Call<String> addActorToFavList(
             @Header("Authorization") String bearerAuth,
