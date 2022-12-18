@@ -4,6 +4,7 @@ import java.util.List;
 
 import kz.hoot.model.Actor;
 import kz.hoot.model.Cast;
+import kz.hoot.model.Invite;
 import kz.hoot.model.Registration;
 import kz.hoot.model.User;
 import kz.hoot.response.LoginResponse;
@@ -44,7 +45,9 @@ public interface Hoot {
     Call<List<Cast>> getCasts();
 
     @GET("cast/created/by/director")
-    Call<List<Cast>> getDirectorCasts();
+    Call<List<Cast>> getDirectorCasts(
+            @Header("Authorization") String bearerAuth
+    );
 
     @POST("actors/add/favourite")
     Call<String> addActorToFavList(
@@ -59,5 +62,11 @@ public interface Hoot {
     @POST("auth/refresh")
     Call<LoginResponse> refresh(
             @Header("Authorization") String bearerAuth
+    );
+
+    @POST("cast/invite")
+    Call<RespondResponse> inviteToCast(
+            @Header("Authorization") String token,
+            @Body Invite inviteModel
     );
 }

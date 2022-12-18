@@ -34,6 +34,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
     private final Context context;
     boolean isAboutCardActive = false;
     private CastActivityService castActivityService;
+    private boolean dirCasts;
 
     @SuppressLint("NotifyDataSetChanged")
     public void setCasts(ArrayList<Cast> casts) {
@@ -41,13 +42,15 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
 
-    public CastAdapter(Context context, CastActivityService castActivityService) {
+    public CastAdapter(Context context, CastActivityService castActivityService, boolean dirCasts) {
         this.context = context;
         this.castActivityService = castActivityService;
+        this.dirCasts = dirCasts;
     }
 
-    public CastAdapter(Context context) {
+    public CastAdapter(Context context, boolean dirCasts) {
         this.context = context;
+        this.dirCasts = dirCasts;
     }
 
     @NonNull
@@ -88,10 +91,10 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
                     holder.castCreatorName.setAnimation(fadeOut);
                     holder.cardAboutFrame.setAnimation(fadeIn);
 
-                    holder.castName.setVisibility(View.INVISIBLE);
-                    holder.castCreatorName.setVisibility(View.INVISIBLE);
-                    holder.castType.setVisibility(View.INVISIBLE);
-                    holder.cardGradient.setVisibility(View.INVISIBLE);
+                    holder.castName.setVisibility(View.GONE);
+                    holder.castCreatorName.setVisibility(View.GONE);
+                    holder.castType.setVisibility(View.GONE);
+                    holder.cardGradient.setVisibility(View.GONE);
 
                     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) holder.cardAboutFrame.getLayoutParams();
 
@@ -108,10 +111,13 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
                     holder.cardAboutFrame.setAnimation(fadeOut);
 
                     holder.castName.setVisibility(View.VISIBLE);
-                    holder.castCreatorName.setVisibility(View.VISIBLE);
-                    holder.castType.setVisibility(View.VISIBLE);
-                    holder.cardGradient.setVisibility(View.VISIBLE);
 
+                    if (!dirCasts) {
+                        holder.castType.setVisibility(View.VISIBLE);
+                        holder.castCreatorName.setVisibility(View.VISIBLE);
+                    }
+
+                    holder.cardGradient.setVisibility(View.VISIBLE);
                     holder.cardAboutFrame.setVisibility(View.GONE);
                     isAboutCardActive = false;
                 }
@@ -151,6 +157,12 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
             }
 
         });
+
+        if (dirCasts) {
+            holder.respondButton.setVisibility(View.GONE);
+            holder.castCreatorName.setVisibility(View.GONE);
+            holder.castType.setVisibility(View.GONE);
+        }
 
     }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import kz.hoot.ActorsActivity;
 import kz.hoot.R;
 import kz.hoot.model.Cast;
 
@@ -28,11 +31,18 @@ public class CastHistoryAdapter extends RecyclerView.Adapter<CastHistoryAdapter.
     private ArrayList<Cast> casts = new ArrayList<>();
     private final Context context;
     boolean isAboutCardActive = false;
-    private final CastHistoryAdapter.CastHistoryActivityService castHistoryActivityService;
+    private CastHistoryAdapter.CastHistoryActivityService castHistoryActivityService;
+    private boolean isDir = false;
 
     public CastHistoryAdapter(Context context, CastHistoryAdapter.CastHistoryActivityService castActivityService) {
         this.context = context;
         this.castHistoryActivityService = castActivityService;
+    }
+
+    public CastHistoryAdapter(Context context, CastHistoryAdapter.CastHistoryActivityService castHistoryActivityService, boolean isDir) {
+        this.context = context;
+        this.isDir = isDir;
+        this.castHistoryActivityService = castHistoryActivityService;
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -93,6 +103,23 @@ public class CastHistoryAdapter extends RecyclerView.Adapter<CastHistoryAdapter.
 
         });
 
+        holder.chooseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int result = castHistoryActivityService.inviteToCast(casts.get(position).getCastId());
+                if (result == 202) {
+                    ActorAdapter.ViewHolder.inviteBtn.setVisibility(View.GONE);
+                    ActorAdapter.ViewHolder.cancelBtn.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        if (isDir) {
+            holder.castResult.setVisibility(View.GONE);
+            holder.castType.setVisibility(View.GONE);
+            holder.chooseBtn.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -109,8 +136,9 @@ public class CastHistoryAdapter extends RecyclerView.Adapter<CastHistoryAdapter.
         private final ImageView poster;
         private final LinearLayout cardAboutFrame;
         private final View cardGradient;
-        private final Button respondButton;
+        private final Button respondButton, chooseBtn;
         private final Button respondCancelButton;
+        private final CardView castResult;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -125,9 +153,12 @@ public class CastHistoryAdapter extends RecyclerView.Adapter<CastHistoryAdapter.
             castDescription = itemView.findViewById(R.id.cast_about_text);
             respondButton = itemView.findViewById(R.id.card_respond_button);
             respondCancelButton = itemView.findViewById(R.id.card_respond_cancel_button);
+            castResult = itemView.findViewById(R.id.cast_history_card__result);
+            chooseBtn = itemView.findViewById(R.id.cast_history_card__choosebtn);
         }
     }
 
     public interface CastHistoryActivityService{
+        int inviteToCast(Long castId);
     }
 }

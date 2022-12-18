@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bottom_castings__parent"
+    android:background="@color/primary"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/bottom_castings__title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/casts"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/bottom_castings__title"
+        android:id="@+id/bottom_castings__recview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

@@ -94,6 +94,10 @@ public class CreateCastActivity extends AppCompatActivity {
                         intent = new Intent(CreateCastActivity.this, FavouriteActorActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__castings_btn:
+                        intent = new Intent(CreateCastActivity.this, DirectorCastActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

@@ -139,6 +139,12 @@
 <!--        app:tint="@null"-->
 <!--        app:backgroundTint="@color/primary"-->
 <!--        android:src="@drawable/ic_baseline_arrow_downward_24"/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/bottom_nav"
+        android:background="@drawable/shadow" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

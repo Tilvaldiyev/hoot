@@ -70,7 +70,7 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
     }
 
     private void initRecView() {
-        castAdapter = new CastAdapter(this, this);
+        castAdapter = new CastAdapter(this, this, false);
         castsRecView.setAdapter(castAdapter);
         castsRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }

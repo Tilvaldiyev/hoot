@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hoot"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DirectorCastActivity"></activity>
+        <activity android:name=".DirectorCastActivity"/>
         <activity android:name=".FavouriteActorActivity" />
         <activity android:name=".CreateCastActivity" />
         <activity android:name=".ActorsActivity" />

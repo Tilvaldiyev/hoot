@@ -177,4 +177,8 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
         });
     }
 
+    @Override
+    public int inviteToCast(Long castId) {
+        return 0;
+    }
 }
