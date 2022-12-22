@@ -69,4 +69,10 @@ public interface Hoot {
             @Header("Authorization") String token,
             @Body Invite inviteModel
     );
+
+    @POST("cast/create")
+    Call<RespondResponse> createCast(
+            @Header("Authorization") String token,
+            @Body Cast castModel
+    );
 }

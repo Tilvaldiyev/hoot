@@ -121,6 +121,10 @@ public class ActorsActivity extends AppCompatActivity implements ActorAdapter.Ac
                         intent = new Intent(ActorsActivity.this, DirectorCastActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__profile_btn:
+                        intent = new Intent(ActorsActivity.this, DirectorProfileActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".DirectorProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:ignore="UselessParent"
+        android:id="@+id/activity_director_profile__main_content"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/mini_logo_image"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/logo"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_director_cast__title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/profile"
+                android:textColor="@color/white"
+                android:layout_marginTop="9dp"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="200dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/activity_director_profile__avatar"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:background="@drawable/qash" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/activity_director_profile__fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/initals"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_director_profile__type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/initals"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_director_profile__casts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/initals"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/activity_director_profile__logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Выйти"
+            android:fontFamily="sans-serif"
+            android:clickable="true"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textAllCaps="false"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center|bottom" />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/primary"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/white"
+        app:itemIconTint="@color/primary"/>
+
+
+    <ProgressBar
+        android:id="@+id/activity_director_profile__progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/white"/>
+
+</RelativeLayout>

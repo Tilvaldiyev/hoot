@@ -71,7 +71,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.ViewHolder>{
         holder.castAboutName.setText(casts.get(position).getCastName());
         holder.castDescription.setText(casts.get(position).getDescription());
 
-        if (casts.get(position).getPoster().length() > 0) {
+        if (casts.get(position).getPoster() != null && casts.get(position).getPoster().length() > 0) {
             byte[] decodedString = Base64.decode(casts.get(position).getPoster(), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             Glide.with(context)

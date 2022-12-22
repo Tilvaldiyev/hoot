@@ -14,6 +14,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/activity_create_cast__main_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -99,6 +100,7 @@
                 android:background="@drawable/rounded_corner"
                 android:fontFamily="sans-serif"
                 android:layout_marginBottom="90dp"
+                android:clickable="true"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
                 android:textAllCaps="false"
@@ -108,37 +110,6 @@
         </RelativeLayout>
     </ScrollView>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/activity_register__scroll_up_btn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginEnd="75dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:backgroundTint="@color/background"-->
-<!--        android:contentDescription="scroll up"-->
-<!--        android:src="@drawable/ic_baseline_arrow_upward_24"-->
-<!--        app:backgroundTint="@color/background"-->
-<!--        app:fabCustomSize="50dp"-->
-<!--        app:tint="@null"/>-->
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/activity_register__scroll_down_btn"-->
-<!--        app:fabCustomSize="50dp"-->
-<!--        android:backgroundTint="@color/primary"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:contentDescription="scroll down"-->
-<!--        app:tint="@null"-->
-<!--        app:backgroundTint="@color/primary"-->
-<!--        android:src="@drawable/ic_baseline_arrow_downward_24"/>-->
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
@@ -154,5 +125,13 @@
         app:menu="@menu/bottom_nav_menu"
         android:background="@color/white"
         app:itemIconTint="@color/primary"/>
+
+    <ProgressBar
+        android:id="@+id/activity_create_cast__progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone"/>
 
 </RelativeLayout>

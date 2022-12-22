@@ -3,7 +3,7 @@ package kz.hoot.model;
 public class User {
     private int id;
     private String username;
-    private String fullname;
+    private String fullName;
     private String userType;
     private boolean readyStatus;
     private String avatar;
@@ -11,7 +11,7 @@ public class User {
     public User(int id, String username, String fullname, String userType, boolean readyStatus, String avatar) {
         this.id = id;
         this.username = username;
-        this.fullname = fullname;
+        this.fullName = fullname;
         this.userType = userType;
         this.readyStatus = readyStatus;
         this.avatar = avatar;
@@ -34,11 +34,11 @@ public class User {
     }
 
     public String getFullname() {
-        return fullname;
+        return fullName;
     }
 
     public void setFullname(String fullname) {
-        this.fullname = fullname;
+        this.fullName = fullname;
     }
 
     public String getUserType() {

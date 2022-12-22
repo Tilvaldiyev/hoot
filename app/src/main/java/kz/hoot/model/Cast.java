@@ -12,6 +12,12 @@ public class Cast {
     private CastType castType;
     private String description;
 
+    public Cast(String castName, CastType castType, String description) {
+        this.castName = castName;
+        this.castType = castType;
+        this.description = description;
+    }
+
     public String getCastName() {
         return castName;
     }

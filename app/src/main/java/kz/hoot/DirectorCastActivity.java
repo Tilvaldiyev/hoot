@@ -99,6 +99,10 @@ public class DirectorCastActivity extends AppCompatActivity {
                         intent = new Intent(DirectorCastActivity.this, CreateCastActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__profile_btn:
+                        intent = new Intent(DirectorCastActivity.this, DirectorProfileActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }
