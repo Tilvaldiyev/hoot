@@ -89,6 +89,10 @@ public class CastHistoryActivity extends AppCompatActivity implements CastHistor
                         intent = new Intent(CastHistoryActivity.this, ProfileActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__create_btn:
+                        intent = new Intent(CastHistoryActivity.this, CreatePortfolioActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

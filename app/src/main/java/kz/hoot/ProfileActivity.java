@@ -85,6 +85,10 @@ public class ProfileActivity extends AppCompatActivity {
                         intent = new Intent(ProfileActivity.this, CastActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__create_btn:
+                        intent = new Intent(ProfileActivity.this, CreatePortfolioActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

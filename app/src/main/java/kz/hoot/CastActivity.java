@@ -91,6 +91,10 @@ public class CastActivity extends AppCompatActivity implements CastAdapter.CastA
                         intent = new Intent(CastActivity.this, ProfileActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__create_btn:
+                        intent = new Intent(CastActivity.this, CreatePortfolioActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }
