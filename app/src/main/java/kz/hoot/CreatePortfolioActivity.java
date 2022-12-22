@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,36 +19,40 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class CreateCastActivity extends AppCompatActivity {
+public class CreatePortfolioActivity extends AppCompatActivity {
 
-    private EditText castName, aboutCast;
-    private Spinner castType;
+    private EditText portfolioLink, aboutPortfolio;
+    private Spinner portfolioAge;
     private ArrayList<String> castTypeList;
     private ArrayAdapter<String> castTypeAdapter;
     private BottomNavigationView bottomNavigationView;
+    private Button createButton;
 
     private String castTypeField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_cast);
+        setContentView(R.layout.activity_create_portfolio);
         initViews();
         initMockData();
         initBottomNav();
+        createButtonClicked();
     }
 
     private void initViews() {
-        castName = findViewById(R.id.activity_create_cast__name_field);
-        aboutCast = findViewById(R.id.activity_create_cast__about_field);
-        castType = findViewById(R.id.activity_create_cast__type_field);
+        portfolioLink = findViewById(R.id.activity_create_portfolio__link);
+        aboutPortfolio = findViewById(R.id.activity_create_portfolio__about_field);
+        portfolioAge = findViewById(R.id.activity_create_portfolio__age);
         bottomNavigationView = findViewById(R.id.bottom_nav);
     }
 
     private void initMockData() {
         castTypeList = new ArrayList<>();
-        castTypeList.add("Тип аккаунта");
-        castTypeList.add("Фильм");
+        castTypeList.add("18-25");
+        castTypeList.add("25-35");
+        castTypeList.add("35-45");
+        castTypeList.add("45+");
 
         castTypeAdapter = new ArrayAdapter<>(
                 this,
@@ -55,9 +60,9 @@ public class CreateCastActivity extends AppCompatActivity {
                 castTypeList
         );
 
-        castType.setAdapter(castTypeAdapter);
+        portfolioAge.setAdapter(castTypeAdapter);
 
-        castType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        portfolioAge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv = (TextView) view;
@@ -79,27 +84,34 @@ public class CreateCastActivity extends AppCompatActivity {
         });
     }
 
+    private void createButtonClicked(){
+        createButton = findViewById(R.id.activity_create_portfolio__create_btn);
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreatePortfolioActivity.this, CastActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void initBottomNav () {
-        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__create_btn);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav__favorites_btn);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottom_nav__actors_btn:
-                        Intent intent = new Intent(CreateCastActivity.this, ActorsActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.bottom_nav__favorites_btn:
-                        intent = new Intent(CreateCastActivity.this, FavouriteActorActivity.class);
+                        Intent intent = new Intent(CreatePortfolioActivity.this, CastActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.bottom_nav__castings_btn:
-                        intent = new Intent(CreateCastActivity.this, DirectorCastActivity.class);
+                        intent = new Intent(CreatePortfolioActivity.this, CastHistoryActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.bottom_nav__profile_btn:
-                        intent = new Intent(CreateCastActivity.this, ProfileActivity.class);
+                        intent = new Intent(CreatePortfolioActivity.this, ProfileActivity.class);
                         startActivity(intent);
                         break;
                 }

@@ -97,6 +97,10 @@ public class FavouriteActorActivity extends AppCompatActivity implements ActorAd
                         intent = new Intent(FavouriteActorActivity.this, DirectorCastActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.bottom_nav__profile_btn:
+                        intent = new Intent(FavouriteActorActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                        break;
                 }
                 return false;
             }

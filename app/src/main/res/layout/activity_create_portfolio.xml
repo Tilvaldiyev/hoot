@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CreateCastActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/activity_create_cast__scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <LinearLayout
+                android:id="@+id/activity_create_cast__about_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/ic_logo_colored" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Ваш возраст"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/activity_create_portfolio__age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/primary"
+                    android:textColorHint="@color/primary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Ссылка на портфолио/instagram"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/activity_create_portfolio__link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Ссылка"
+                    android:inputType="text"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="13dp"
+                    android:textColor="@color/primary"
+                    android:textColorHint="@color/primary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Расскажите немного о себе"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/activity_create_portfolio__about_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Описание"
+                    android:inputType="text"
+                    android:minHeight="100dp"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="13dp"
+                    android:textColor="@color/primary"
+                    android:textColorHint="@color/primary"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/activity_create_portfolio__create_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_create_cast__about_block"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="Создать"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </ScrollView>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/activity_register__scroll_up_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginEnd="75dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:backgroundTint="@color/background"-->
+<!--        android:contentDescription="scroll up"-->
+<!--        android:src="@drawable/ic_baseline_arrow_upward_24"-->
+<!--        app:backgroundTint="@color/background"-->
+<!--        app:fabCustomSize="50dp"-->
+<!--        app:tint="@null"/>-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/activity_register__scroll_down_btn"-->
+<!--        app:fabCustomSize="50dp"-->
+<!--        android:backgroundTint="@color/primary"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:contentDescription="scroll down"-->
+<!--        app:tint="@null"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        android:src="@drawable/ic_baseline_arrow_downward_24"/>-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/primary"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/white"
+        app:itemIconTint="@color/primary"/>
+
+</RelativeLayout>

@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kz.hoot.adapter.ActorAdapter;
-import kz.hoot.adapter.CastAdapter;
 import kz.hoot.adapter.CastHistoryAdapter;
 import kz.hoot.model.Actor;
 import kz.hoot.model.Cast;
@@ -115,6 +113,9 @@ public class ActorsActivity extends AppCompatActivity implements ActorAdapter.Ac
                         break;
                     case R.id.bottom_nav__favorites_btn:
                         intent = new Intent(ActorsActivity.this, FavouriteActorActivity.class);
+                        startActivity(intent);
+                    case R.id.bottom_nav__profile_btn:
+                        intent = new Intent(ActorsActivity.this, ProfileActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.bottom_nav__castings_btn:
